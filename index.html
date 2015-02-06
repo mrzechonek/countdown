@@ -21,7 +21,7 @@
             var timer = document.getElementById('timer'),
                 target = location.hash ? moment(location.hash.replace('#', '')) : moment().add(5, 'minutes'),
                 padTimePart = function(num) { return '00'.substring(0, 2-String(num).length) + num; },
-                format = function(duration) { return Math.floor(duration.asHours()) + ':' + padTimePart(duration.minutes()) + ':' + padTimePart(duration.seconds()); };
+                format = function(duration) { return Math.floor(duration.asDays()) + ' ' + padTimePart(duration.hours()) + ':' + padTimePart(duration.minutes()) + ':' + padTimePart(duration.seconds()); };
                 update = function() { var diff = target.diff(moment()); diff < 0 ? clearInterval(x) : timer.innerHTML = format(moment.duration(diff)); };
 
             var x = setInterval(update, 1000);
